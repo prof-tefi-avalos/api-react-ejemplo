@@ -1,0 +1,58 @@
+:root {
+  --rojo: #d6312a;
+  --texto: #1f2430;
+  --mute: #646b7d;
+  --borde: #e2e5ec;
+  --fondo: #f6f7fb;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--texto);
+  background: var(--fondo);
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+h1, h2, h3, p { margin: 0; }
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: 0.5; }
+
+.contenido { max-width: 1100px; margin: 0 auto; padding: 32px 16px 60px; display: grid; gap: 20px; }
+h1 { color: var(--rojo); font-size: 32px; }
+h2 { font-size: 20px; }
+.subtitulo { color: var(--mute); }
+.nombre { text-transform: capitalize; }
+
+/* Layout: lista a la izquierda, detalle y formulario a la derecha */
+.columnas { display: grid; grid-template-columns: 1fr 320px; gap: 20px; align-items: start; }
+.panel-lateral { display: grid; gap: 16px; position: sticky; top: 16px; }
+@media (max-width: 760px) {
+  .columnas { grid-template-columns: 1fr; }
+  .panel-lateral { position: static; }
+}
+
+.lista { display: grid; gap: 16px; }
+.buscador { padding: 10px 14px; border: 1px solid var(--borde); border-radius: 999px; background: white; }
+
+.grilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+.tarjeta { position: relative; display: grid; justify-items: center; gap: 4px; padding: 14px 10px; background: white; border: 1px solid var(--borde); border-radius: 16px; color: inherit; }
+.tarjeta:hover { border-color: var(--rojo); }
+.tarjeta.seleccionada { border: 2px solid var(--rojo); background: #fff5f4; }
+.tarjeta img { width: 96px; height: 96px; object-fit: contain; }
+.tarjeta h3 { font-size: 16px; }
+.numero { position: absolute; top: 8px; left: 10px; color: var(--mute); font-size: 12px; font-weight: 600; }
+
+.paginacion { display: flex; justify-content: center; align-items: center; gap: 16px; color: var(--mute); }
+.paginacion button { background: white; color: var(--rojo); border: 1px solid var(--rojo); padding: 8px 16px; border-radius: 999px; font-weight: 600; }
+
+.detalle, .formulario { display: grid; gap: 10px; padding: 18px; background: white; border: 1px solid var(--borde); border-radius: 16px; }
+.detalle { justify-items: center; text-align: center; }
+.detalle img { width: 160px; height: 160px; object-fit: contain; }
+.tipos { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.tipos li { background: var(--fondo); border: 1px solid var(--borde); padding: 2px 10px; border-radius: 999px; font-size: 13px; text-transform: capitalize; }
+
+.formulario textarea { padding: 10px; border: 1px solid var(--borde); border-radius: 10px; resize: vertical; }
+.formulario button { background: var(--rojo); color: white; border: 0; padding: 10px; border-radius: 10px; font-weight: 600; }
+
+/* Mensajes de estado: cargando, error, vacío y éxito */
+.estado { padding: 24px 16px; text-align: center; color: var(--mute); background: white; border: 1px dashed var(--borde); border-radius: 12px; }
+.estado.error { color: #a01c2c; background: #fdecee; border-color: #f5c2c9; }
+.estado.exito { color: #135c36; background: #e8f7ee; border-color: #b7e4c7; padding: 12px; }
